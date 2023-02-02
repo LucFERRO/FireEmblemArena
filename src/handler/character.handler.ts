@@ -14,6 +14,7 @@ export class CharacterHandler {
         const id = parseInt(req.params.id)
         try {
             const result = await this.characterService.findById(id);
+            if (result === null) return res.status(404).json({ message: "Requested character_id does not exist." })
             res.status(200).json(result)
 
         } catch (err) {
@@ -33,52 +34,39 @@ export class CharacterHandler {
 
     }
 
-    // getPatientById = async (req: Request, res: Response) => {
-    //     let requestedId: number = parseInt(req.params.id)
-    //     try {
-    //         const result = await this.characterService.findById(requestedId);
-    //         if (result === null) return res.status(404).json({ message: "Requested character_id does not exist." })
-    //         res.status(200).json(result)
-    //     } catch (err) {
-    //         console.log(err)
-    //         res.status(500).json({ message: 'ERROR 500', err });
-    //     }
-    // };
+    createCharacter = async (req: Request, res: Response) => {
+        const { name, level, class_id, base_hp, base_str, base_mag, base_dex, base_spd, base_def, base_res, base_lck, sprite } = req.body
 
-    // createPatient = async (req: Request, res: Response) => {
-    //     try {
-    //         if (!req.body.password) return res.status(400).json({
-    //             message: "Password required.",
-    //         });
-    //         const result = await this.characterService.create(req.body)
-    //         return res.status(200).json(result)
-    //     } catch (err) {
-    //         return res.status(500).json({ message: 'Error in handler', err })
-    //     }
-    // }
+        try {
+            const result = await this.characterService.create(req.body)
+            return res.status(200).json(result)
+        } catch (err) {
+            return res.status(500).json({ message: 'Error in handler', err })
+        }
+    }
 
-    // updatePatient = async (req: Request, res: Response) => {
-    //     const id = parseInt(req.params.id)
+    updateCharacter = async (req: Request, res: Response) => {
+        const id = parseInt(req.params.id)
 
-    //     try {
-    //         const result = await this.characterService.update(req.body, id)
-    //         if (result) return res.status(200).json({message: 'Patient successfully updated.'})
-    //         return res.status(404).send()
-    //     } catch (err) {
-    //         return res.status(500).json({ message: 'Error in handler', err })
-    //     }
-    // }
+        try {
+            const result = await this.characterService.update(req.body, id)
+            if (result) return res.status(200).json({message: 'Character successfully updated.'})
+            return res.status(404).send()
+        } catch (err) {
+            return res.status(500).json({ message: 'Error in handler', err })
+        }
+    }
 
-    // deletePatient = async (req: Request, res: Response) => {
-    //     const id = parseInt(req.params.id)
+    deleteCharacter = async (req: Request, res: Response) => {
+        const id = parseInt(req.params.id)
 
-    //     try {
-    //         const result = await this.characterService.delete(id)
-    //         if (result) return res.status(200).json({message: 'Patient successfully deleted.'})
-    //         return res.status(404).send()
-    //     } catch (err) {
-    //         return res.status(500).json({ message: 'Error in handler', err })
-    //     }
-    // }
+        try {
+            const result = await this.characterService.delete(id)
+            if (result) return res.status(200).json({message: 'Character successfully deleted.'})
+            return res.status(404).send()
+        } catch (err) {
+            return res.status(500).json({ message: 'Error in handler', err })
+        }
+    }
 
 }

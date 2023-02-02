@@ -2,6 +2,7 @@ export const classes = [
     {
         class_id: 11,
         class_name: 'Noble',
+        available_weap: ['sword'],
         bonus_hp: 5,
         bonus_str: 1,
         bonus_mag: 0,
@@ -14,6 +15,7 @@ export const classes = [
     {
         class_id: 12,
         class_name: 'Lord',
+        available_weap: ['axe','lance'],
         bonus_hp: 10,
         bonus_str: 8,
         bonus_mag: -2,
@@ -26,6 +28,7 @@ export const classes = [
     {
         class_id: 13,
         class_name: 'Rider',
+        available_weap: ['lance'],
         bonus_hp: 7,
         bonus_str: 4,
         bonus_mag: 0,

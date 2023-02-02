@@ -54,12 +54,12 @@ characterController.get('/:id', characterHandler.getCharacterById)
  *         in: body
  *         required: true
  *         type: object
- *         default: { "activity":"activity","lastname": "lastname", "firstname": "firstname", "mail": "email@email.fr", "password": "string","birthdate": "01-01-2000", "phone_number" : "0123456789", "description": "description","avatar": "avatar" }
+ *         default: { "name": "Test", "level" : 5, "class_id" : 10, "weapon_id" : 10, "base_hp": 10, "base_str": 10, "base_mag": 10, "base_dex": 10, "base_spd": 10, "base_def": 10, "base_res": 10, "base_lck": 10, "sprite" : "test" }
  *      responses:
  *        200:
  *          description: Create.
  */
-// characterController.post('/', characterHandler.createcharacter)
+characterController.post('/', characterHandler.createCharacter)
 
 
 /**
@@ -80,12 +80,12 @@ characterController.get('/:id', characterHandler.getCharacterById)
  *         in: body
  *         required: true
  *         type: object
- *         default: { "activity":"activity","lastname": "lastname", "firstname": "firstname", "mail": "email@email.fr", "password": "string","birthdate": "01-01-2000", "phone_number" : "0123456789", "description": "description","avatar": "avatar" }
+ *         default: { "name": "Test", "level" : 5, "class_id" : 10, "weapon_id" : 10, "base_hp": 10, "base_str": 10, "base_mag": 10, "base_dex": 10, "base_spd": 10, "base_def": 10, "base_res": 10, "base_lck": 10, "sprite" : "test" }
  *      responses:
  *        200:
  *          description: Update.
  */
-// characterController.put('/:id', characterHandler.updatecharacter)
+characterController.put('/:id', characterHandler.updateCharacter)
 
 /**
  * @openapi
@@ -103,4 +103,4 @@ characterController.get('/:id', characterHandler.getCharacterById)
  *        200:
  *          description: Delete.
  */
-// characterController.delete('/:id',characterHandler.deletecharacter)
+characterController.delete('/:id', characterHandler.deleteCharacter)

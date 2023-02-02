@@ -6,8 +6,8 @@ export class Character extends Model {
     character_id!: number
     name!: string
     level!: number
-    class_id!: string
-    sprite!: string
+    class_id!: number
+    weapon_id!: number
     base_hp!: number
     base_str!: number
     base_mag!: number
@@ -16,6 +16,7 @@ export class Character extends Model {
     base_def!: number
     base_res!: number
     base_lck!: number
+    sprite!: string
 }
 
 Character.init({
@@ -46,6 +47,14 @@ Character.init({
         validate: {
             notNull: { msg: concatRequiredMessage('Class') },
             notEmpty: { msg: concatRequiredMessage('Class') }
+        }
+    },
+    weapon_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notNull: { msg: concatRequiredMessage('Weapon') },
+            notEmpty: { msg: concatRequiredMessage('Weapon') }
         }
     },
     base_hp: {

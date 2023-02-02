@@ -5,6 +5,7 @@ import { concatRequiredMessage } from "../core/methods"
 export class CharacterClass extends Model {
     class_id!: number
     class_name!: string
+    available_weap!: string[]
     bonus_hp!: number
     bonus_str!: number
     bonus_mag!: number
@@ -27,6 +28,14 @@ CharacterClass.init({
         validate: {
             notNull: { msg: concatRequiredMessage('Class name') },
             notEmpty: { msg: concatRequiredMessage('Class name') }
+        }
+    },
+    available_weap: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+        validate: {
+            notNull: { msg: concatRequiredMessage('Available weapons') },
+            notEmpty: { msg: concatRequiredMessage('Available weapons') }
         }
     },
     bonus_hp: {

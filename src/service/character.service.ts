@@ -12,16 +12,16 @@ export class CharacterService implements IService<Character> {
     findById(id: number): Promise<Character | null> {
         return this.characterRepository.findById(id)
     }
-    create(t: Character): Promise<Character | undefined> {
-        throw new Error("Method not implemented.");
-    }
-    update(t: Character, id: number): Promise<number | boolean | undefined> {
-        throw new Error("Method not implemented.");
-    }
-    delete(id: number): Promise<number | boolean> {
-        throw new Error("Method not implemented.");
-    }
     findAll(): Promise<any> {
         return this.characterRepository.findAll()
+    }
+    create(data: Character): Promise<Character | undefined> {
+        return this.characterRepository.create(data)
+    }
+    update(data: Character, id: number): Promise<number | boolean | undefined> {
+        return this.characterRepository.update(data, id)
+    }
+    delete(id: number): Promise<number | boolean> {
+        return this.characterRepository.delete(id)
     }
 }
